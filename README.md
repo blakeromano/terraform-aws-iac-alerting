@@ -22,8 +22,6 @@ This Terraform module configures AWS monitoring and alerting components so you c
 module "iac_alerting" {
   source = "git::https://github.com/blakeromano/terraform-aws-iac-alerting.git"
 
-  enabled = true
-  alert_topic_name = "critical-alerts"
   region           = "us-east-1"
   slack_team_id    = "TXXXXXXX"
   slack_channel_id = "CXXXXXXX"
@@ -34,8 +32,6 @@ module "iac_alerting" {
 
 | Name             | Description                                                  | Type  | Default     | Required |
 |------------------|--------------------------------------------------------------|-------|------------|:--------:|
-| enabled          | Enable or disable alerting                                   | bool  | true       |    no    |
-| alert_topic_name | SNS topic name for critical alerts                          | string| ""         |   yes    |
 | region           | The AWS region to deploy resources in                       | string| "us-east-1"|    no    |
 | slack_team_id    | The ID of the Slack workspace for notifications             | string| n/a        |   yes    |
 | slack_channel_id | The ID of the Slack channel for notifications               | string| n/a        |   yes    |
@@ -52,4 +48,4 @@ For a complete example, check out the [examples](examples/basic) directory.
 ## Notes
 
 - Ensure your AWS credentials have the necessary permissions to create the required resources
-- Authenticate the workspace with AWS Q Chatbot before running TF apply
+- Authenticate the Slack workspace with AWS Q Chatbot before running TF apply
